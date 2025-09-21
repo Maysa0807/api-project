@@ -13,11 +13,15 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {
-    @Autowired
-    private CourseRepository courseRepository;
+
+    private final CourseRepository courseRepository;
+
+    public CourseController(CourseRepository courseRepository){
+        this.courseRepository = courseRepository;
+    }
 
     @GetMapping
     public List<CourseEntity> list(){
-        return null;
+        return courseRepository.findAll();
     }
 }
